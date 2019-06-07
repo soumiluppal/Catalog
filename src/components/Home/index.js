@@ -4,6 +4,13 @@ import Header from '../Header';
 class Home extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            categories: {
+                byId: {
+                    
+                }
+            }
+        }
     }
 
     render() {

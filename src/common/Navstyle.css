@@ -17,7 +17,7 @@
 }
 
 .nav-item > .active {
-    color: cyan !important;
+    color: #88BCFC !important;
     background-color: white !important;
 }
 
