@@ -8,8 +8,15 @@
   pointer-events: none;
 }
 
+
+.App-link {
+  color: #61dafb;
+}
+
 .App-header {
-  background-color: #282c34;
+  padding-top: 100px;
+  background-size: cover;
+  background-image: url('../images/background.png');
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -19,15 +26,22 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.icon {
+  width: 20%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.btn-div {
+  position: absolute; 
+  bottom: 0;
+  margin-bottom: 1rem;
+}
+
+.btn-scroll-down {
+  background: transparent;
+  border: 0px;
+}
+
+.btn-scroll-down:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 0px;
 }

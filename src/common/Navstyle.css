@@ -1,0 +1,39 @@
+.scrolled {
+    background-color: #88BCFC;
+}
+
+.unscrolled {
+    background-color: transparent;
+}
+
+.nav-item > .nav-link {
+    line-height: 2;
+    color: white !important;
+    font-weight: 600;
+}
+
+.nav-item:hover {
+    color: white;
+}
+
+.nav-item > .active {
+    color: cyan !important;
+    background-color: white !important;
+}
+
+#basic-navbar-nav {
+    padding: 1% 5%;
+}
+
+.name-brand {
+    font-size: 30px;
+    font-weight: 900;
+    margin-left: 5%;
+    color: white !important;
+}
+
+@media (max-width: 768px) {
+    nav.navbar {
+      background: #EEA6B1;
+    }
+  }
