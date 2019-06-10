@@ -1,32 +1,22 @@
 import React, { Component } from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
+import PropTypes from 'prop-types';
+
 import './Navstyle.css';
 
 class MyNavbar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            navStyle: 'unscrolled',
+            scrolled: false,
         };
         this.componentDidUpdate = this.componentDidUpdate.bind(this);
     }
 
     componentDidUpdate() {
-        console.log(this.state.navStyle);
-        let navStyle = this.props.navStyle;
-        if (this.state.navStyle != navStyle) {
+        if (this.state.scrolled != this.props.scrolled) {
             this.setState({
-                navStyle: navStyle,
-            });
-        }
-    }
-
-    componentDidUpdate() {
-        console.log(this.state.navStyle);
-        let navStyle = this.props.navStyle;
-        if (this.state.navStyle != navStyle) {
-            this.setState({
-                navStyle: navStyle
+                scrolled: this.props.scrolled,
             });
         }
     }
@@ -36,10 +26,10 @@ class MyNavbar extends Component {
     }
 
     render() {
-        let navStyle = this.state.navStyle;
+        let { scrolled } = this.state;
 
         return (
-            <Navbar className={navStyle} fixed='top' expand='md'>
+            <Navbar className={scrolled.toString()} fixed='top' expand='md'>
                 <Navbar.Brand href="home" className="name-brand" onClick={this.goToTop}>Catalog</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav" className='justify-content-end'>
@@ -57,6 +47,10 @@ class MyNavbar extends Component {
             </Navbar>
         );
     }
+}
+
+MyNavbar.propTypes = {
+    scrolled: PropTypes.bool.isRequired
 }
 
 export default MyNavbar;

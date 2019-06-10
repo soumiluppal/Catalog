@@ -1,23 +1,25 @@
-import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import { Navigation } from './common';
-import Home from './components/Home';
+import React, { Component } from 'react';
+import './styles/style.css';
+import Main from './components/Main';
 import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import catReducer from './reducers/categories.reducer';
 
-import './styles/style.css';
+const catStore = createStore(catReducer);
 
-const store = createStore(catReducer);
+class App extends Component {
 
-function App() {
-  return (
-    <div className="App">
-      <Navigation />
-      <BrowserRouter>
-        <Home />
-      </BrowserRouter>
-    </div>
-  );
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <Provider store={catStore}>
+        <Main />
+      </Provider>
+    );
+  }
 }
 
 export default App;

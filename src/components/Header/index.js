@@ -16,6 +16,7 @@ class Header extends Component {
                 <div className='main-name-div'>
                     <h1 className='main-name'>Welcome to <b>Catalog</b>!</h1>
                     <hr></hr>
+                    <p>Your one stop for everything!</p>
                 </div>
                 <div className="btn-div">
                     <Button className="btn-scroll-down">

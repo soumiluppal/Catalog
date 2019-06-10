@@ -1,8 +1,8 @@
-.scrolled {
+.true {
     background-color: #88BCFC;
 }
 
-.unscrolled {
+.false {
     background-color: transparent;
 }
 
