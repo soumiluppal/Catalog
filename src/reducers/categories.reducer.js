@@ -4,13 +4,15 @@ import catList from '../data/categories';
 
 const catReducer = function categories(state = catList, action) {
     switch (action.type) {
+        // Change navbar color
         case 'SWITCH_SCROLLED': {
             return state = {
                 scrolled: action.scrolled,
-                categories: { ...state.categories },
+                categories: state.categories,
                 auth_token: state.auth_token
             }
         }
+        // Push all categories to state
         case 'GET_CATEGORIES': {
             return state = {
                 scrolled: state.scrolled,
@@ -18,10 +20,11 @@ const catReducer = function categories(state = catList, action) {
                 auth_token: state.auth_token
             };
         }
+        // Push user authentication token to state
         case 'GET_AUTH_TOKEN': {
             return state = {
                 scrolled: state.scrolled,
-                categories: { ...state.categories },
+                categories: state.categories,
                 auth_token: action.auth_token
             }
         }

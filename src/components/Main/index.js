@@ -9,6 +9,7 @@ import { switchScrolled, getToken } from '../../actions/categories.action';
 
 import routes from '../../constants';
 import '../../styles/style.css';
+import AddItem from '../AddItem';
 
 function mapStateToProps(state) {
     return {
@@ -42,14 +43,15 @@ class Main extends Component {
 
     render() {
 
-        let { scrolled, categories } = this.props;
+        let { scrolled, categories, auth_token } = this.props;
 
         return (
             <div className="App">
-                <Navigation scrolled={scrolled} />
+                <Navigation user={auth_token ? true : false} scrolled={scrolled} />
                 <Switch>
                     <Route exact path={routes.HOME} render={() => <Home />} />
-                    <Route exact path={routes.USER} render={() => <NewAccount getToken={this.props.getToken} switchScrolled={this.props.switchScrolled}/>} />
+                    <Route exact path={routes.USER} render={() => <NewAccount getToken={this.props.getToken} />} />
+                    <Route exact path={routes.ITEM} render={() => <AddItem auth_token={auth_token} />} />
                 </Switch>
             </div>
         );

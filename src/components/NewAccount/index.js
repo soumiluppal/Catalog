@@ -19,10 +19,6 @@ class NewAccount extends Component {
         };
     }
 
-    componentDidMount() {
-        this.props.switchScrolled(true);
-    }
-
     renderLogin() {
         return (
             <div>
@@ -101,7 +97,8 @@ class NewAccount extends Component {
         }
         axios.post('http://localhost:5000/users', data)
         .then(res => {
-            this.props.history.push('/');
+            this.props.getToken(res.data['access_token']);
+            this.props.history.goBack();
         })
         .catch(err => {
             alert(err);
@@ -116,9 +113,8 @@ class NewAccount extends Component {
         }
         axios.post('http://localhost:5000/auth', data)
         .then(res => {
-            this.props.switchScrolled(false);
             this.props.getToken(res.data['access_token']);
-            this.props.history.push('/');
+            this.props.history.goBack();
         })
         .catch(err => {
             alert(err);
