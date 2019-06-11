@@ -9,7 +9,8 @@ import { getCategories } from '../../actions/categories.action';
 function mapStateToProps(state) {
     return {
         scrolled: state.scrolled,
-        categories: state.categories
+        categories: state.categories,
+        auth_token: state.auth_token
     }
 }
 
@@ -40,6 +41,7 @@ class Home extends Component {
 
     render() {
         let { categories } = this.props;
+        console.log(this.props.auth_token)
         return (
             <div>
                 <Header />

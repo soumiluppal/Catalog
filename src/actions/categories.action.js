@@ -12,3 +12,10 @@ export function getCategories(categories) {
         categories
     }
 }
+
+export function getToken(auth_token) {
+    return {
+        type: 'GET_AUTH_TOKEN',
+        auth_token
+    }
+}

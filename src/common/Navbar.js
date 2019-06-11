@@ -30,17 +30,17 @@ class MyNavbar extends Component {
 
         return (
             <Navbar className={scrolled.toString()} fixed='top' expand='md'>
-                <Navbar.Brand href="home" className="name-brand" onClick={this.goToTop}>Catalog</Navbar.Brand>
+                <Navbar.Brand href="/" className="name-brand" onClick={this.goToTop}>Catalog</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav" className='justify-content-end'>
                     <Nav
                         variant='pills'
                     >
-                        <Nav.Item>
-                            <Nav.Link href='user'>Sign In</Nav.Link>
+                        <Nav.Item className="main-nav-item">
+                            <Nav.Link href='user' className="main-nav-link">Sign In</Nav.Link>
                         </Nav.Item>
-                        <Nav.Item>
-                            <Nav.Link href='myitems'>My Items</Nav.Link>
+                        <Nav.Item className="main-nav-item">
+                            <Nav.Link href='myitems' className="main-nav-link">My Items</Nav.Link>
                         </Nav.Item>
                     </Nav>
                 </Navbar.Collapse>

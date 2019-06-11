@@ -108,3 +108,14 @@
 p {
   font-size: 25px;
 }
+
+.account-container {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  margin-top: 10%;
+}
+
+.user-modal {
+  width: 50%;
+}

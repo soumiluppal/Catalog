@@ -6,17 +6,17 @@
     background-color: transparent;
 }
 
-.nav-item > .nav-link {
+.main-nav-item > .main-nav-link {
     line-height: 2;
     color: white !important;
     font-weight: 600;
 }
 
-.nav-item:hover {
+.main-nav-item:hover {
     color: white;
 }
 
-.nav-item > .active {
+.main-nav-item > .active {
     color: #88BCFC !important;
     background-color: white !important;
 }

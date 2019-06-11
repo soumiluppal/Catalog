@@ -4,6 +4,7 @@ import Main from './components/Main';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import catReducer from './reducers/categories.reducer';
+import { BrowserRouter } from 'react-router-dom';
 
 const catStore = createStore(catReducer);
 
@@ -16,7 +17,9 @@ class App extends Component {
   render() {
     return (
       <Provider store={catStore}>
-        <Main />
+        <BrowserRouter>
+          <Main />
+        </BrowserRouter>
       </Provider>
     );
   }
