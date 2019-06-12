@@ -9,7 +9,8 @@ const catReducer = function categories(state = catList, action) {
             return state = {
                 scrolled: action.scrolled,
                 categories: state.categories,
-                auth_token: state.auth_token
+                auth_token: state.auth_token,
+                user_id: state.user_id
             }
         }
         // Push all categories to state
@@ -17,7 +18,8 @@ const catReducer = function categories(state = catList, action) {
             return state = {
                 scrolled: state.scrolled,
                 categories: action.categories,
-                auth_token: state.auth_token
+                auth_token: state.auth_token,
+                user_id: state.user_id
             };
         }
         // Push user authentication token to state
@@ -25,7 +27,17 @@ const catReducer = function categories(state = catList, action) {
             return state = {
                 scrolled: state.scrolled,
                 categories: state.categories,
-                auth_token: action.auth_token
+                auth_token: action.auth_token,
+                user_id: action.user_id
+            }
+        }
+        // Sign out of currently logged in account
+        case 'SIGN_OUT': {
+            return state = {
+                scrolled: state.scrolled,
+                categories: state.categories,
+                auth_token: null,
+                user_id: null
             }
         }
         default:

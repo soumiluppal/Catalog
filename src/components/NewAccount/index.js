@@ -97,7 +97,7 @@ class NewAccount extends Component {
         }
         axios.post('http://localhost:5000/users', data)
         .then(res => {
-            this.props.getToken(res.data['access_token']);
+            this.props.getToken(res.data['access_token'], res.data['user_id']);
             this.props.history.goBack();
         })
         .catch(err => {
@@ -113,7 +113,7 @@ class NewAccount extends Component {
         }
         axios.post('http://localhost:5000/auth', data)
         .then(res => {
-            this.props.getToken(res.data['access_token']);
+            this.props.getToken(res.data['access_token'], res.data['user_id']);
             this.props.history.goBack();
         })
         .catch(err => {
@@ -122,6 +122,9 @@ class NewAccount extends Component {
     }
 
     render() {
+        if(this.props.user_id && this.props.user_id !== '') {
+            this.props.history.push('/');
+        }
         return (
             <div className="account-container">
                 <Modal.Dialog className="user-modal">

@@ -13,9 +13,16 @@ export function getCategories(categories) {
     }
 }
 
-export function getToken(auth_token) {
+export function getToken(auth_token, user_id) {
     return {
         type: 'GET_AUTH_TOKEN',
-        auth_token
+        auth_token,
+        user_id
+    }
+}
+
+export function signOut() {
+    return {
+        type: 'SIGN_OUT'
     }
 }

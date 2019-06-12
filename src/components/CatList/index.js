@@ -55,27 +55,25 @@ class CatList extends Component {
         let { categories } = this.props;
 
         return (
-            <div className="section-container">
-                <div className="cat-filter-container">
-                    <div>
-                        <h1 className='main-name'>Find items by category.</h1>
-                        <hr></hr>
-                    </div>
-                    <CatSearch selection={this.selection.bind(this)} />
-                    <ItemList categoryId={selectedCategory} page={page} setLimit={this.setLimit} />
-                    <div className="page-btn-div">
-                        {
-                            page <= 1 ?
-                                <Button className="page-btn" onClick={this.previous} disabled>Previous</Button> :
-                                <Button className="page-btn" onClick={this.previous}>Previous</Button>
-                        }
-                        <p className="page-text">Page {page}</p>
-                        {
-                            (page*pageSize) >= limit ?
+            <div className="cat-filter-container">
+                <CatSearch selection={this.selection.bind(this)} />
+                {
+                    !this.props.homeItems ?
+                        <ItemList user_id={this.props.user_id} categoryId={selectedCategory} page={page} setLimit={this.setLimit} /> :
+                        <ItemList categoryId={selectedCategory} page={page} setLimit={this.setLimit} />
+                }
+                <div className="page-btn-div">
+                    {
+                        page <= 1 ?
+                            <Button className="page-btn" onClick={this.previous} disabled>Previous</Button> :
+                            <Button className="page-btn" onClick={this.previous}>Previous</Button>
+                    }
+                    <p className="page-text">Page {page}</p>
+                    {
+                        (page * pageSize) >= limit ?
                             <Button className="page-btn" onClick={this.next} disabled>Next</Button> :
                             <Button className="page-btn" onClick={this.next}>Next</Button>
-                        }
-                    </div>
+                    }
                 </div>
             </div>
         );

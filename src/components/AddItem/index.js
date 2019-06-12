@@ -58,7 +58,7 @@ class AddItem extends Component {
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary">Close</Button>
+                    <Button variant="secondary" onClick={this.props.history.goBack}>Close</Button>
                     <Button variant="primary" onClick={this.submitItem}>Save Item</Button>
                 </Modal.Footer>
             </div>
@@ -97,7 +97,7 @@ class AddItem extends Component {
         return (
             <div className="account-container">
                 <Modal.Dialog className="user-modal">
-                    <Modal.Header closeButton>
+                    <Modal.Header>
                         <Modal.Title>New Item</Modal.Title>
                     </Modal.Header>
                     {

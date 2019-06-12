@@ -48,8 +48,10 @@
 
 .section-container {
   display: flex;
+  flex-direction: column;
   width: 100%;
   justify-content: center;
+  margin-top: 10%;
 }
 
 .cat-filter-container {
@@ -146,6 +148,11 @@ p {
   height: 6.5rem;
 }
 
+.item-card:hover {
+  height: 6.5rem;
+  background-color: rgba(136, 188, 252, 0.5);
+}
+
 .item-card-text {
   font-size: 16px;
   line-height: 0.2;
@@ -162,4 +169,22 @@ p {
 
 .list-item {
   width: 100%;
+}
+
+.item-btn {
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  width: 100%;
+  border: none;
+}
+
+.item-btn:hover {
+  background: transparent;
+  color: inherit;
+  border: none;
+}
+
+.edit-mode-btn {
+  margin-right: 8px;
 }

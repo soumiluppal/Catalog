@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Nav, Navbar } from 'react-bootstrap';
+import { Nav, Navbar, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
@@ -28,8 +28,8 @@ class MyNavbar extends Component {
         }
     }
 
-    goToTop() {
-        window.scroll({ top: 0, left: 0, behavior: "auto" });
+    goToTop = () => {
+        window.scroll({ top: 0, left: 0, behavior: "smooth" });
     }
 
     render() {
@@ -53,6 +53,12 @@ class MyNavbar extends Component {
                         <Nav.Item className="main-nav-item">
                             <Nav.Link as={Link} to='additem' className="main-nav-link">Add Item</Nav.Link>
                         </Nav.Item>
+                        {
+                            user ?
+                                <Nav.Item className="main-nav-item">
+                                    <Nav.Link as={Link} to="/" onClick={this.props.signOut} className="main-nav-link">Sign Out</Nav.Link>
+                                </Nav.Item> : null
+                        }
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

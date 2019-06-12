@@ -8,12 +8,16 @@ class Home extends Component {
     }
 
     render() {
-        let { categories } = this.props;
-        console.log(categories);
         return (
             <div>
                 <Header />
-                <CatList />
+                <div className="section-container">
+                    <div className="section-heading-div">
+                        <h1 className='main-name'>Find items by category.</h1>
+                        <hr></hr>
+                    </div>
+                    <CatList user_id={this.props.user_id} homeItems />
+                </div>
             </div>
         );
     }

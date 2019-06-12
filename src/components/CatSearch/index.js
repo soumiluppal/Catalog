@@ -8,6 +8,7 @@ import { getCategories } from '../../actions/categories.action';
 
 
 function mapStateToProps(state) {
+    state = state.catReducer;
     return {
         categories: state.categories,
         auth_token: state.auth_token
@@ -45,6 +46,7 @@ class CatSearch extends Component {
             });
     }
 
+    // Change selected category from dropdown
     selection = (eventKey, e) => {
         this.setState({
             searchText: e.target.innerText,
@@ -54,12 +56,14 @@ class CatSearch extends Component {
         this.props.selection(parseInt(e.target.getAttribute('catid')));
     }
 
+    // On change search box text
     search = (e) => {
         this.setState({
             searchText: e.target.value,
         });
     }
 
+    // Open dropdown menu
     drop = () => {
         this.setState({
             searchText: '',
@@ -67,12 +71,14 @@ class CatSearch extends Component {
         });
     }
 
+    // Close dropdown menu
     up = () => {
         this.setState({
             show: false
         });
     }
 
+    // Filter category list by search text
     filterBySearch = (catName) => {
         return catName.toLowerCase().includes(this.state.searchText.toLowerCase());
     }
