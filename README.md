@@ -10,7 +10,7 @@ In the project directory,
 mysql -u root
 mysql> CREATE DATABASE catalog_restful_api;`
 
-Open file app/sql/mock_data.sql and run given MySQL commands in MySQL cli.
+Open file `app/sql/mock_data.sql` and run given MySQL commands in MySQL cli.
 
 Then, follow instructions in `README.md`.
 
