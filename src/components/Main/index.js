@@ -28,10 +28,6 @@ function mapDispatchToProps(dispatch) {
 
 class Main extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     componentDidMount() {
         document.addEventListener('scroll', () => {
             const isTop = window.scrollY < 500;

@@ -6,6 +6,7 @@ import CatSearch from '../components/CatSearch';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { closeModal } from '../actions/modal.action';
+import { serverURL } from '../constants/config';
 
 
 function mapStateToProps(state) {
@@ -118,14 +119,11 @@ class ItemModal extends Component {
         const headers = {
             'Authorization': 'JWT ' + auth_token,
         }
-        axios.delete(`http://localhost:5000/categories/${categoryId}/items/${item.id}`, { headers: headers })
+        axios.delete(`${serverURL}/categories/${categoryId}/items/${item.id}`, { headers: headers })
             .then(res => {
                 this.props.updateItems();
-                this.props.closeModal();
+                this.onClose();
             })
-            .catch(err => {
-                console.log(err);
-            });
     }
 
     onEditSubmit = () => {
@@ -140,14 +138,11 @@ class ItemModal extends Component {
         const headers = {
             'Authorization': 'JWT ' + auth_token,
         }
-        axios.put(`http://localhost:5000/categories/${categoryId}/items/${item.id}`, data, { headers: headers })
+        axios.put(`${serverURL}/categories/${categoryId}/items/${item.id}`, data, { headers: headers })
             .then(res => {
                 this.props.updateItems();
-                this.props.closeModal();
+                this.onClose();
             })
-            .catch(err => {
-                console.log(err);
-            });
     }
 
     render() {
@@ -169,5 +164,5 @@ class ItemModal extends Component {
     }
 }
 
-
+export { ItemModal };
 export default connect(mapStateToProps, mapDispatchToProps)(ItemModal);

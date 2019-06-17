@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { openModal } from '../../actions/modal.action';
 import { ItemModal } from '../../common';
+import { serverURL } from '../../constants/config';
 
 function mapStateToProps(state) {
     state = state.modalReducer;
@@ -26,18 +27,17 @@ class ItemList extends Component {
         super(props);
 
         this.state = {
-            pulled: false,
             allItems: []
         }
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (this.props.categoryId != null && this.props.categoryId != -1 && this.props.categoryId !== prevProps.categoryId) {
+        if (this.props.categoryId != null && this.props.categoryId !== -1 && this.props.categoryId !== prevProps.categoryId) {
             let { categoryId } = this.props;
             let self = this;
-            axios.get(`http://localhost:5000/categories/${categoryId}/items?offset=0&limit=0`)
+            axios.get(`${serverURL}/categories/${categoryId}/items?offset=0&limit=0`)
                 .then(res => {
-                    axios.get(`http://localhost:5000/categories/${categoryId}/items?offset=0&limit=${res.data['total_items']}`)
+                    axios.get(`${serverURL}/categories/${categoryId}/items?offset=0&limit=${res.data['total_items']}`)
                         .then(res => {
                             self.setState({
                                 allItems: Array.from(res.data['items']).filter(item => this.filterByUser(item)),
@@ -45,22 +45,16 @@ class ItemList extends Component {
                                 self.props.setLimit(parseInt(this.state.allItems.length));
                             })
                         })
-                        .catch(err => {
-                            console.log(err);
-                        });
                 })
-                .catch(err => {
-                    console.log(err);
-                });
         }
     }
 
     updateItems = async () => {
         let { categoryId } = this.props;
         let self = this;
-        axios.get(`http://localhost:5000/categories/${categoryId}/items?offset=0&limit=0`)
+        axios.get(`${serverURL}/categories/${categoryId}/items?offset=0&limit=0`)
             .then(res => {
-                axios.get(`http://localhost:5000/categories/${categoryId}/items?offset=0&limit=${res.data['total_items']}`)
+                axios.get(`${serverURL}/categories/${categoryId}/items?offset=0&limit=${res.data['total_items']}`)
                     .then(res => {
                         self.setState({
                             allItems: Array.from(res.data['items']).filter(item => this.filterByUser(item)),
@@ -68,13 +62,7 @@ class ItemList extends Component {
                             self.props.setLimit(parseInt(this.state.allItems.length));
                         })
                     })
-                    .catch(err => {
-                        console.log(err);
-                    });
             })
-            .catch(err => {
-                console.log(err);
-            });
     }
 
     onItemClick = (item) => {
@@ -89,7 +77,7 @@ class ItemList extends Component {
     }
 
     filterByUser = (item) => {
-        if (!this.props.user_id || this.props.user_id == '') {
+        if (!this.props.user_id || this.props.user_id === '') {
             return true;
         }
         else if (this.props.user_id === item['user_id']) {
@@ -114,9 +102,6 @@ class ItemList extends Component {
                                     <Card.Title className="item-card-name">{item['name']}</Card.Title>
                                     <Card.Body className="item-card-body">
                                         <Card.Text className="item-card-text">
-                                            {item['description']}
-                                        </Card.Text>
-                                        <Card.Text className="item-card-text">
                                             ${item['price']}
                                         </Card.Text>
                                     </Card.Body>
@@ -132,9 +117,6 @@ class ItemList extends Component {
                                 <Card className="item-card">
                                     <Card.Title className="item-card-name">{item['name']}</Card.Title>
                                     <Card.Body className="item-card-body">
-                                        <Card.Text className="item-card-text">
-                                            {item['description']}
-                                        </Card.Text>
                                         <Card.Text className="item-card-text">
                                             ${item['price']}
                                         </Card.Text>
@@ -154,4 +136,5 @@ ItemList.propTypes = {
     categoryId: PropTypes.number.isRequired
 }
 
+export { ItemList };
 export default connect(mapStateToProps, mapDispatchToProps)(ItemList);

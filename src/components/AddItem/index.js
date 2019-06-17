@@ -5,6 +5,7 @@ import { Modal, Button, Nav, Form, InputGroup } from 'react-bootstrap';
 import routes from '../../constants';
 import { withRouter } from 'react-router-dom';
 import CatSearch from '../CatSearch';
+import { serverURL } from '../../constants/config';
 
 class AddItem extends Component {
 
@@ -81,13 +82,10 @@ class AddItem extends Component {
         const headers = {
             'Authorization': 'JWT ' + this.props.auth_token,
         }
-        axios.post(`http://localhost:5000/categories/${selectedCategory}/items`, data, { headers: headers })
+        axios.post(`${serverURL}/categories/${selectedCategory}/items`, data, { headers: headers })
             .then(res => {
                 this.props.history.push('/');
             })
-            .catch(err => {
-                console.log(err);
-            });
     }
 
     render() {

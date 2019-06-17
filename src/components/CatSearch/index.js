@@ -5,7 +5,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getCategories } from '../../actions/categories.action';
-
+import { serverURL } from '../../constants/config';
 
 function mapStateToProps(state) {
     state = state.catReducer;
@@ -31,19 +31,21 @@ class CatSearch extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/categories?offset=0&limit=0')
+        axios.get(`${serverURL}/categories?offset=0&limit=0`)
             .then(res => {
-                axios.get(`http://localhost:5000/categories?offset=0&limit=${res.data['total_categories']}`)
+                axios.get(`${serverURL}/categories?offset=0&limit=${res.data['total_categories']}`)
                     .then(res => {
                         this.props.getCategories(res.data['categories']);
                     })
                     .catch(err => {
-                        console.log(err)
-                    });
+                        console.log(err);
+                        throw err;
+                    })
             })
             .catch(err => {
                 console.log(err);
-            });
+                throw err;
+            })
     }
 
     // Change selected category from dropdown
@@ -87,7 +89,7 @@ class CatSearch extends Component {
 
         let { searchText, selectedCategory, show } = this.state
         let { categories } = this.props;
-
+        
         return (
             <div className="cat-filter">
                 <InputGroup className="mb-3">
@@ -127,4 +129,5 @@ CatSearch.propTypes = {
     selection: PropTypes.func.isRequired
 }
 
+export { CatSearch };
 export default connect(mapStateToProps, mapDispatchToProps)(CatSearch);

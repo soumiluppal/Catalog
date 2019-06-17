@@ -145,11 +145,10 @@ p {
 }
 
 .item-card {
-  height: 6.5rem;
+  height: 5rem;
 }
 
 .item-card:hover {
-  height: 6.5rem;
   background-color: rgba(136, 188, 252, 0.5);
 }
 

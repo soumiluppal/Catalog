@@ -80,4 +80,5 @@ class CatList extends Component {
     }
 }
 
+export { CatList };
 export default CatList;

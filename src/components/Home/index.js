@@ -7,6 +7,8 @@ class Home extends Component {
         super(props);
     }
 
+    // homeItems defines if the category list is being generated from Home page or account page
+    
     render() {
         return (
             <div>
