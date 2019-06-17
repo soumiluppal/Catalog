@@ -1,6 +1,28 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Setup browser for CORS (dev)
 
-## Available Scripts
+Install Chrome extension at (https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi)
+
+
+## Run Backend before starting React app
+
+In the project directory,
+`cd backend
+mysql -u root
+mysql> CREATE DATABASE catalog_restful_api;`
+
+Open file app/sql/mock_data.sql and run given MySQL commands in MySQL cli.
+
+Then, follow instructions in `README.md`.
+
+
+## Install required node modules
+
+In the project directory, run:
+
+### `npm install --save`
+
+
+## Frontend Scripts
 
 In the project directory, you can run:
 
