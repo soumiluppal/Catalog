@@ -24,6 +24,7 @@ export function getToken(auth_token, user_id) {
 }
 
 export function signOut() {
+    localStorage.clear();
     return {
         type: 'SIGN_OUT'
     }

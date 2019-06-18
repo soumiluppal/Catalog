@@ -38,7 +38,11 @@ class Main extends Component {
                 this.props.switchScrolled(false);
             }
         });
-        this.props.getToken(localStorage.getItem('auth_token'), localStorage.getItem('user_id'));
+        let tempToken = localStorage.getItem('auth_token');
+        let tempUser = localStorage.getItem('user_id');
+        if(tempToken && tempUser) {
+            this.props.getToken(tempToken, parseInt(tempUser));
+        }
     }
 
     render() {
@@ -49,7 +53,7 @@ class Main extends Component {
             <div className="App">
                 <Navigation user={auth_token ? true : false} scrolled={scrolled} signOut={this.props.signOut} />
                 <Switch>
-                    <Route exact path={routes.HOME} render={() => <Home user_id={this.props.user_id}/>} />
+                    <Route exact path={routes.HOME} render={() => <Home user_id={user_id}/>} />
                     <Route exact path={routes.USER} render={() => <NewAccount getToken={this.props.getToken} user_id={this.props.user_id} />} />
                     <Route exact path={routes.ITEM} render={() => <AddItem auth_token={auth_token} />} />
                     <Route exact path={routes.ACCOUNT} render={() => <Account user_id={user_id} auth_token={auth_token} />} />
