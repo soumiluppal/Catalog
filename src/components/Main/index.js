@@ -38,6 +38,7 @@ class Main extends Component {
                 this.props.switchScrolled(false);
             }
         });
+        this.props.getToken(localStorage.getItem('auth_token'), localStorage.getItem('user_id'));
     }
 
     render() {

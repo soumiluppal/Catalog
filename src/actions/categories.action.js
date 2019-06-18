@@ -14,6 +14,8 @@ export function getCategories(categories) {
 }
 
 export function getToken(auth_token, user_id) {
+    localStorage.setItem('auth_token', auth_token);
+    localStorage.setItem('user_id', user_id);
     return {
         type: 'GET_AUTH_TOKEN',
         auth_token,
